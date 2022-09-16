@@ -1,0 +1,154 @@
+package example;
+
+
+abstract class employee
+{
+    String name;
+    int age;
+    int hourrate;
+    employee(String n,int ho,int ag)
+    {
+        name=n;
+        hourrate=ho;
+        age=ag;
+    }
+    abstract double CalcSalary(double  hours);
+
+    String tostring()
+    {
+        return "name:"+name+" age:"+age+" hourrate:"+hourrate;
+    }
+
+}
+class clerk extends employee
+{
+    double clerksalary;
+    clerk(String a,int b,int c)
+    {
+        super(a,b,c);
+    }
+    public double CalcSalary(double  hours)
+    {
+        clerksalary=hours*hourrate;
+        return clerksalary;
+    }
+}
+
+
+class manager extends employee
+{
+    double managersalary;
+    manager(String a,int b,int c)
+    {
+        super(a,b,c);
+    }
+    public double CalcSalary(double  hours)
+    {
+        managersalary=hours*hourrate;
+        return managersalary;
+    }
+
+
+
+}
+public class Sample
+{
+    public static void main(String[] args)
+    {
+        manager m1=new manager("kingsley",12,18);
+        System.out.println("total salary:"+m1.CalcSalary(20));
+        System.out.println(m1.tostring());
+        manager m2=new manager("gowtham",12,19);
+        System.out.println("total salary:"+m2.CalcSalary(20));
+        System.out.println(m2.tostring());
+        clerk cle=new clerk("muthu",10,19);
+        System.out.println("total salary:"+cle.CalcSalary(18));
+        System.out.println(cle.tostring());
+    }
+}
+
+
+package exp4;
+public class Exp4 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        int x,y,z;
+        rectangle r=new rectangle(10,12);
+        r.print();
+        System.out.println("\n");
+        manager m=new manager("izabella",1000,10000,19,123) ;
+        m.print();
+        System.out.println("\n");
+        racecar c=new racecar("minicooper",2021,5000000);
+        c.print();
+        System.out.println("\n");
+    }
+    
+}
+interface printable{
+    void print();
+    
+}
+class rectangle implements printable{
+    int x;
+    int y;
+    int z;
+
+rectangle(int x,int y){
+this.x=x;
+this.y=y;
+z=x*y;
+}
+    @Override
+    public void print()
+{
+System.out.println("length:"+x);
+System.out.println("breadth:"+y);
+System.out.println("area:"+z);
+}
+}
+class racecar implements printable{
+    String brand;
+    int price;
+    int model;
+    racecar(String brand,int model,int price){
+        this.brand=brand;
+        this.model=model;
+        this.price=price;
+        
+    }
+    @Override
+    public void print()
+{
+    System.out.println("brand:"+brand);
+    System.out.println("model:"+model);
+    System.out.println("price:"+price);
+    
+}
+    
+}
+ class manager implements printable{
+    String name;
+    int empid;
+    int salary;
+    int age;
+    manager(String name,int empid,int salary,int age){
+            this.age=age;
+            this.empid=empid;
+            this.salary=salary;
+            this.name=name;
+            
+}
+    @Override
+    public void print()
+{
+System.out.println("name:"+name);
+System.out.println("employee id:"+empid);
+System.out.println("age:"+age);
+System.out.println("salary:"+salary);
+}
+}
